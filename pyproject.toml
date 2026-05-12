@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "embedding-drift-graph"
+version = "0.1.0"
+description = "Track how entity embeddings drift across model versions. SQLite-backed store, GraphQL API, deterministic drift math."
+readme = "README.md"
+license = { text = "AGPL-3.0" }
+authors = [{ name = "Miz Causevic" }]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "strawberry-graphql>=0.220",
+]
+keywords = ["embeddings", "drift", "graphql", "vector", "llm", "rag"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.urls]
+Homepage = "https://github.com/mizcausevic-dev/embedding-drift-graph"
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+embedding-drift = "embedding_drift.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/embedding_drift"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
